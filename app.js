@@ -30,7 +30,8 @@ const showImages = (images) => {
     console.log(image)
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = ` <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    div.innerHTML = ` 
+     <img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
     gallery.appendChild(div)
     toggleSpinner(false);
   })
@@ -58,7 +59,7 @@ const selectItem = (event, img) => {
     console.log(sliders)
   } else {
     
-    sliders.pop(img);
+    sliders.splice(item,1);
     console.log(sliders)
     
   }
@@ -98,11 +99,13 @@ let createSlider = () => {
   timer = setInterval(function () {
     if(duration>0){
       slideIndex++;
+      changeSlide(slideIndex);
     } else {
-      
+      clearInterval(timer);
+      alert('Time Duration can not negative.Please Submit Proper Value')
     }
     
-    changeSlide(slideIndex);
+    
   }, duration);
 }
 
