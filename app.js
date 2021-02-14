@@ -102,7 +102,7 @@ let createSlider = () => {
       changeSlide(slideIndex);
     } else {
       clearInterval(timer);
-      alert('Time Duration can not negative.Please Submit Proper Value')
+      alert('Time Duration can not negative/blank.Please Submit Proper Value')
     }
     
     
